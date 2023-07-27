@@ -5,9 +5,8 @@ export default function handleResponseFromAPI(promise) {
     } else {
       reject(Error('The fake API is not working currently'));
     }
-  }).then(() => {
+  }).finally(() => {
     console.log('Got a response from the API');
-  }).catch((error) => {
-    console.log(error.message);
   });
+
 }
