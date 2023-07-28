@@ -5,5 +5,5 @@ export default async function asyncUploadUser() {
     await createUser()]).then((values) => Promise.resolve({
     photo: values[0],
     user: values[1],
-  }));
+  })).catch((error) => error);
 }
