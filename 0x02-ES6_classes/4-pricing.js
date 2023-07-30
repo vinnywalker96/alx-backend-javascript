@@ -1,39 +1,32 @@
-import Currency from "./3-currency";
+import Currency from './3-currency';
 
-export default class Pricing extends Currency{
-    construct(amount, currency) {
-        this._amount = amount;
-        this._currency = currency;
-        
-    }
+export default class Pricing {
+  constructor(amount, currency) {
+    this.amount = amount;
+    this.currency = currency;
+  }
 
-    get amount() {
-        return this._amount;
-    }
+  get amount() {
+    return this._amount;
+  }
 
-    set amount(value) {
-        if (typeof value !== 'number') {
-            throw new TypeError('Amount must be a number');
-        }
-        this._amount = value;
+  set amount(value) {
+    if (value === 'number' && value > 0) {
+      this._amount = value;
+    } else {
+      throw TypeError('Amount must be a number');
     }
+  }
 
-    get currency() {
-        return this._currency;
-    }
+  get currency() {
+    return this._currency;
+  }
 
-    set currency(value) {
-        if (typeof value !== 'object'){
-            throw new TypeError('Currency must be an string')
-        }
-        return this._currency = value
+  set currency(value) {
+    if (value instanceof Currency) {
+      this._currency = value;
+    } else {
+      throw TypeError('Currency must be a Currency');
     }
-
-    displayFullPrice(){
-        return `${this.amount} ${super.displayFullCurrency()}`;
-    }
-
-    static convertPrice(amount, conversionRate){
-        return amount * conversionRate;
-    }
+  }
 }
