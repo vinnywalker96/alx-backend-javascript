@@ -17,4 +17,7 @@ export default class Building {
     }
     this._sqrt = value;
   }
+  evacuationWarningMessage(){
+    return '';
+  }
 }
