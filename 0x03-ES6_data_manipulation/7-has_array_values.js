@@ -1,3 +1,3 @@
-export default function hasValuesFromArray(set, arr) {
-  return set.has(...arr);
+export default function hasValuesFromArray(set, array) {
+  return set.has(...array);
 }
