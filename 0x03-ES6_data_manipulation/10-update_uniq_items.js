@@ -7,5 +7,6 @@ export default function updateUniqueItems(map) {
     });
     return updatedMap;
   }
-  return 'Cannot process';
+
+  throw new Error('Cannot process');
 }
