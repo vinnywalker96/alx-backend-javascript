@@ -1,3 +1,6 @@
 export default function hasValuesFromArray(set, array) {
-  return set.has(...array);
+  if (set instanceof Set) {
+    return set.has(array);
+  }
+  return 'false';
 }
