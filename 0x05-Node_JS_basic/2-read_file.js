@@ -7,10 +7,10 @@ function countStudents(fileName) {
   try {
     const fileContents = fs.readFileSync(fileName, 'utf-8');
     const lines = fileContents.toString().split('\n');
-    for (let i = 0; i < lines.length; i += 1) {
-      if (lines[i]) {
+    lines.filter((line) => line)
+      .forEach((line) => {
         length += 1;
-        const field = lines[i].toString().split(',');
+        const field = line.toString().split(',');
         if (Object.prototype.hasOwnProperty.call(students, field[3])) {
           students[field[3]].push(field[0]);
         } else {
@@ -21,15 +21,15 @@ function countStudents(fileName) {
         } else {
           fields[field[3]] = 1;
         }
-      }
-    }
+      });
     const size = length - 1;
-    console.log(`Number of students: ${size}`);
-    for (const [key, value] of Object.entries(fields)) {
+    const output = [`Number of students: ${size}`];
+    Object.entries(fields).forEach(([key, value]) => {
       if (key !== 'field') {
-        console.log(`Number of students in ${key}: ${value}. List: ${students[key].join(', ')}`);
+        output.push(`Number of students in ${key}: ${value}. List: ${students[key].join(', ')}`);
       }
-    }
+    });
+    return output.join('\n');
   } catch (error) {
     throw Error('Cannot load the database');
   }
