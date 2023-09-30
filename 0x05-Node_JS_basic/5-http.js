@@ -21,7 +21,7 @@ const server = http.createServer((req, res) => {
         length += 1;
         const field = line.toString().split(',');
         if (Object.prototype.hasOwnProperty.call(fields, field[3])) {
-          fields[field[3]] += 1;  
+          fields[field[3]] += 1;
         } else {
           fields[field[3]] = 1;
         }
