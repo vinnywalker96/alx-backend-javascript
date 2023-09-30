@@ -32,12 +32,15 @@ const server = http.createServer((req, res) => {
     // eslint-disable-next-line no-restricted-syntax
     for (const [key, value] of Object.entries(fields)) {
       if (key !== 'field') {
-        res.write(`Number of students in ${key}: ${value}. List: ${fields.students}\n`);
+        res.write(
+          `Number of students in ${key}: ${value}. List: ${fields.students}\n`,
+        );
       }
     }
     res.end();
   }
 });
 
-server.listen(port, hostname, () => {
-});
+server.listen(port, hostname, () => {});
+
+module.exports = server;
