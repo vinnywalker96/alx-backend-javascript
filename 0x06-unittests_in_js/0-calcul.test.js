@@ -4,22 +4,22 @@ const calculateNumber = require('./0-calcul.js');
 describe('calculateNumber', () => {
   it('', () => {
     const result = calculateNumber(1, 3);
-    assert.equal(result, 4);
+    assert.strictEqual(result, 4);
   });
 
   it('', () => {
 	  const result = calculateNumber(1, 3.7);
-	  assert.equal(result, 5);
+	  assert.strictEqual(result, 5);
   });
 
   it('', () => {
 	  const result = calculateNumber(1.2, 3.7);
-	  assert.equal(result, 5);
+	  assert.strictEqual(result, 5);
   });
 
   it('', () => {
 	  const result = calculateNumber(1.5, 3.7);
-	  assert.equal(result, 6);
+	  assert.strictEqual(result, 6);
   });
 });
 
