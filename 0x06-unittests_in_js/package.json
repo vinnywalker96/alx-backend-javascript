@@ -12,5 +12,8 @@
     "mocha": "^10.2.0",
     "chai": "*",
     "sinon": "*"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
   }
 }
