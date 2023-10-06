@@ -1,19 +1,21 @@
-const chai = require("chai");
-const request = require("supertest");
-const app = require('./api');
-const expect = chai.expect;
+
+const { expect } = require('chai');
+const request = require('request');
 
 describe('Index page', () => {
-        it('Should  return  200 OK', async () => {
-            const response = await request(app)
-            .get("/")
-            .expect(200);
-        });
-        it('Should return content of Welcome to the payment system', async () => {
-            const response = await request(app)
-            .get('/');
+  const endpoint = 'http://localhost:7865';
 
-            const body = response.body;
-            chai.assert(body, 'Welcome to the payment system');
-        })
+  it('Returns status of 200 Ok', function (done) {
+    request(endpoint, function (error, response, body) {
+      expect(response.statusCode).to.equal(200);
+      done();
+    });
+
+    it('Returns the right content', function (done) {
+        request(endpoint, function (error, response, body) {
+          expect(body).to.equal('Welcome to the payment system');
+          done();
+        });
+      });
+  });
 });
