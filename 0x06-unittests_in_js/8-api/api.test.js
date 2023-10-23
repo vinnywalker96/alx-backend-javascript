@@ -1,21 +1,14 @@
-
-const { expect } = require('chai');
+const chai = require('chai');
+const expect = chai.expect;
 const request = require('request');
 
-describe('Index page', () => {
-  const endpoint = 'http://localhost:7865';
-
-  it('Returns status  code of 200 Ok',  (done) => {
-    request(endpoint,  (error, response, body)  => {
-      expect(response.statusCode).to.equal(200);
-      done();
+describe('test the API', () => {
+  it('test the API with status, body', (done) => {
+    request('http://localhost:7865', 'GET', (err, res, body) => {
+      if (err) throw err;
+      expect(res.statusCode).to.equal(200);
+      expect(body).to.equal('Welcome to the payment system');
     });
-
-    it('Returns Correct page constenr',  (done) => {
-        request(endpoint,  (error, response, body) => {
-          expect(body).to.equal('Welcome to the payment system');
-          done();
-        });
-      });
+    done();
   });
 });
